@@ -1,0 +1,13 @@
+node {
+	stage ('SCM checkout'){
+		git "https://github.com/GhadaGhram/Jumia-TestAuto-Cucumber"
+		}
+	stage ('Build'){
+    	dir("@jumia") {
+	   sh "mvn clean install"
+       }
+       	dir("@jumia/target") {
+	   sh "java -jar com.test-1.0-SNAPSHOT.jar"
+       }
+		}
+}
